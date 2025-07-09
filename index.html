@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Neon Rules | Игровой Telegram Бот</title>
+    <title>📑Правила | 🐉Dragon Demonik</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
     <style>
@@ -13,6 +13,7 @@
             --neon-green: #09fbd3;
             --dark-bg: #0f0e17;
             --card-bg: #1a1a2e;
+            --section-bg: #16213e;
         }
         
         body {
@@ -37,6 +38,8 @@
             text-align: center;
             padding: 40px 0;
             position: relative;
+            opacity: 0;
+            animation: fadeInDown 2.5s ease-out forwards;
         }
         
         h1 {
@@ -47,82 +50,67 @@
             font-size: 2.5rem;
             margin-bottom: 10px;
             text-shadow: 0 0 10px rgba(8, 247, 254, 0.7);
-            animation: pulse 2s infinite alternate;
+            animation: pulse 3s infinite alternate;
         }
         
         .subtitle {
             color: var(--neon-green);
             font-size: 1.2rem;
             margin-bottom: 30px;
-            animation: fadeIn 2s;
+            animation: fadeIn 3s;
         }
         
-        .rules-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
-            gap: 25px;
-            margin-top: 40px;
-        }
-        
-        .rule-card {
-            background: var(--card-bg);
-            border-radius: 10px;
-            padding: 25px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-            border-left: 4px solid var(--neon-pink);
-            transition: all 0.3s ease;
+        .rules-section {
+            background: var(--section-bg);
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 40px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            border-left: 5px solid var(--neon-pink);
             opacity: 0;
-            transform: translateY(20px);
-            animation: fadeInUp 0.6s forwards;
+            transform: translateY(30px);
+            animation: fadeInUp 2s forwards;
+            animation-delay: calc(var(--delay) * 0.3s);
         }
         
-        .rule-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4),
-                        0 0 15px rgba(254, 83, 187, 0.3);
+        .section-title {
+            font-family: 'Orbitron', sans-serif;
+            color: var(--neon-pink);
+            font-size: 1.8rem;
+            margin-bottom: 25px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--neon-blue);
+            text-shadow: 0 0 8px rgba(254, 83, 187, 0.5);
+        }
+        
+        .rule-item {
+            margin-bottom: 20px;
+            padding-left: 20px;
+            border-left: 2px solid rgba(9, 251, 211, 0.3);
+            opacity: 0;
+            transform: translateX(-20px);
+            animation: fadeInRight 1.5s forwards;
+            animation-delay: calc(var(--delay) * 0.2s + 0.5s);
         }
         
         .rule-number {
-            display: inline-block;
-            width: 30px;
-            height: 30px;
-            background: linear-gradient(135deg, var(--neon-pink), var(--neon-blue));
-            color: black;
-            border-radius: 50%;
-            text-align: center;
-            line-height: 30px;
-            font-weight: bold;
-            margin-right: 15px;
-            font-family: 'Orbitron', sans-serif;
-        }
-        
-        .rule-title {
-            font-family: 'Orbitron', sans-serif;
             color: var(--neon-green);
-            display: inline;
-            font-size: 1.1rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
+            font-weight: bold;
+            margin-right: 10px;
+            font-family: 'Orbitron', sans-serif;
         }
         
         .rule-content {
-            margin-top: 15px;
-            line-height: 1.6;
+            line-height: 1.7;
             color: #d1d1d1;
+            margin-top: 5px;
         }
         
-        .category-title {
-            grid-column: 1 / -1;
-            font-family: 'Orbitron', sans-serif;
-            color: var(--neon-pink);
-            font-size: 1.5rem;
-            margin: 40px 0 20px;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            border-bottom: 2px solid var(--neon-blue);
-            padding-bottom: 10px;
-            text-shadow: 0 0 8px rgba(254, 83, 187, 0.5);
-            animation: fadeInLeft 1s;
+        .sub-rule {
+            margin-left: 25px;
+            margin-top: 10px;
+            padding-left: 15px;
+            border-left: 1px dashed rgba(8, 247, 254, 0.2);
         }
         
         footer {
@@ -132,6 +120,9 @@
             color: #666;
             font-size: 0.9rem;
             border-top: 1px solid #333;
+            opacity: 0;
+            animation: fadeIn 3s forwards;
+            animation-delay: 2s;
         }
         
         .neon-btn {
@@ -146,31 +137,64 @@
             letter-spacing: 1px;
             margin-top: 30px;
             cursor: pointer;
-            transition: all 0.3s ease;
+            transition: all 0.8s cubic-bezier(0.68, -0.55, 0.27, 1.55);
             text-decoration: none;
             box-shadow: 0 0 10px rgba(9, 251, 211, 0.3);
-            animation: pulse 2s infinite alternate;
+            animation: pulse 3s infinite alternate;
+            opacity: 0;
+            animation: fadeIn 3s forwards;
+            animation-delay: 1.5s;
         }
         
         .neon-btn:hover {
             background: var(--neon-green);
             color: black;
             box-shadow: 0 0 20px rgba(9, 251, 211, 0.6);
-            transform: translateY(-2px);
+            transform: translateY(-3px);
         }
         
         @keyframes pulse {
-            0% { text-shadow: 0 0 10px rgba(8, 247, 254, 0.7); }
-            100% { text-shadow: 0 0 20px rgba(8, 247, 254, 0.9), 0 0 30px rgba(8, 247, 254, 0.5); }
+            0% { 
+                text-shadow: 0 0 10px rgba(8, 247, 254, 0.7); 
+                box-shadow: 0 0 10px rgba(9, 251, 211, 0.3);
+            }
+            100% { 
+                text-shadow: 0 0 20px rgba(8, 247, 254, 0.9), 0 0 30px rgba(8, 247, 254, 0.5); 
+                box-shadow: 0 0 20px rgba(9, 251, 211, 0.6);
+            }
         }
         
         @keyframes fadeInUp {
-            to { opacity: 1; transform: translateY(0); }
+            from { 
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to { 
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
         
-        @keyframes fadeInLeft {
-            from { opacity: 0; transform: translateX(-20px); }
-            to { opacity: 1; transform: translateX(0); }
+        @keyframes fadeInDown {
+            from { 
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+            to { 
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes fadeInRight {
+            from { 
+                opacity: 0;
+                transform: translateX(-20px);
+            }
+            to { 
+                opacity: 1;
+                transform: translateX(0);
+            }
         }
         
         @keyframes fadeIn {
@@ -178,24 +202,6 @@
             to { opacity: 1; }
         }
         
-        /* Анимация задержки для карточек */
-        .rule-card:nth-child(1) { animation-delay: 0.1s; }
-        .rule-card:nth-child(2) { animation-delay: 0.2s; }
-        .rule-card:nth-child(3) { animation-delay: 0.3s; }
-        .rule-card:nth-child(4) { animation-delay: 0.4s; }
-        .rule-card:nth-child(5) { animation-delay: 0.5s; }
-        .rule-card:nth-child(6) { animation-delay: 0.6s; }
-        .rule-card:nth-child(7) { animation-delay: 0.7s; }
-        .rule-card:nth-child(8) { animation-delay: 0.8s; }
-        .rule-card:nth-child(9) { animation-delay: 0.9s; }
-        .rule-card:nth-child(10) { animation-delay: 1.0s; }
-        
-        /* Неоновый эффект для заголовков */
-        .neon {
-            text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px var(--neon-blue), 0 0 20px var(--neon-blue);
-        }
-        
-        /* Анимированный фон */
         .particles {
             position: fixed;
             top: 0;
@@ -211,136 +217,147 @@
     <div class="particles" id="particles-js"></div>
     
     <div class="container">
-        <header class="animate_animated animate_fadeInDown">
+        <header>
             <h1 class="neon">Правила Бота</h1>
             <div class="subtitle">Соблюдайте эти правила для комфортной игры</div>
-            <a href="#" class="neon-btn">Присоединиться</a>
+            <a href="https://t.me/DragonDemonic_bot" class="neon-btn">Бот</a>
+            <a href="https://t.me/DragonDemonic_channel" class="neon-btn">Новости</a>
+            <a href="https://t.me/DragonDemonic_chat" class="neon-btn">Беседа</a>
         </header>
         
-        <div class="rules-grid">
-            <h2 class="category-title">Основные запреты</h2>
+        <div class="rules-section" style="--delay: 1">
+            <h2 class="section-title">1. Основные запреты</h2>
             
-            <div class="rule-card">
-                <span class="rule-number">1</span>
-                <span class="rule-title">Реклама</span>
-                <div class="rule-content">
-                    Запрещена любая реклама сторонних проектов без согласования с администрацией. Это включает группы, каналы и другие боты.
+            <div class="rule-item" style="--delay: 1">
+                <div>
+                    <span class="rule-number">1.1</span>
+                    <span class="rule-content">
+                        Запрещена любая реклама сторонних проектов без согласования с администрацией.
+                    </span>
+                </div>
+                <div class="sub-rule">
+                    • Включая группы, каналы и другие боты<br>
+                    • Реклама в любом виде запрещена
                 </div>
             </div>
             
-            <div class="rule-card">
-                <span class="rule-number">2</span>
-                <span class="rule-title">Толерантность</span>
-                <div class="rule-content">
-                    Не допускаются расистские, религиозные или политические споры. Оскорбления по любому признаку запрещены.
+            <div class="rule-item" style="--delay: 2">
+                <div>
+                    <span class="rule-number">1.2</span>
+                    <span class="rule-content">
+                        Не допускаются расистские, религиозные или политические споры.
+                    </span>
+                </div>
+                <div class="sub-rule">
+                    • Оскорбления по национальному признаку строго запрещены<br>
+                    • Религиозные дискуссии не разрешены<br>
+                    • Политические споры будут пресекаться
                 </div>
             </div>
             
-            <div class="rule-card">
-                <span class="rule-number">3</span>
-                <span class="rule-title">Оскорбления</span>
-                <div class="rule-content">
-                    Запрещено оскорблять других участников или провоцировать конфликты. Уважайте друг друга.
+            <div class="rule-item" style="--delay: 3">
+                <div>
+                    <span class="rule-number">1.3</span>
+                    <span class="rule-content">
+                        Запрещено оскорблять других участников или провоцировать конфликты.
+                    </span>
+                </div>
+                <div class="sub-rule">
+                    • Уважайте друг друга<br>
+                    • Конструктивная критика допустима<br>
+                    • Оскорбления приведут к бану
+                </div>
+            </div>
+        </div>
+        
+        <div class="rules-section" style="--delay: 2">
+            <h2 class="section-title">2. Общение и поведение</h2>
+            
+            <div class="rule-item" style="--delay: 1">
+                <div>
+                    <span class="rule-number">2.1</span>
+                    <span class="rule-content">
+                        Не нарушайте покой в голосовом чате.
+                    </span>
+                </div>
+                <div class="sub-rule">
+                    • Громкие звуки запрещены<br>
+                    • Крики и шумы недопустимы<br>
+                    • Фоновая музыка только в специальных каналах
                 </div>
             </div>
             
-            <div class="rule-card">
-                <span class="rule-number">4</span>
-                <span class="rule-title">Семья</span>
-                <div class="rule-content">
-                    Никогда не затрагивайте родителей и родственников других участников. Это строгое табу.
+            <div class="rule-item" style="--delay: 2">
+                <div>
+                    <span class="rule-number">2.2</span>
+                    <span class="rule-content">
+                        Запрещены флуд и спам.
+                    </span>
+                </div>
+                <div class="sub-rule">
+                    • Повторяющиеся сообщения запрещены<br>
+                    • Массовые упоминания наказуемы<br>
+                    • Бессмысленный контент удаляется
                 </div>
             </div>
             
-            <div class="rule-card">
-                <span class="rule-number">5</span>
-                <span class="rule-title">18+ контент</span>
-                <div class="rule-content">
-                    Запрещена публикация порнографического контента любого вида. Это приведет к немедленному бану.
+            <div class="rule-item" style="--delay: 3">
+                <div>
+                    <span class="rule-number">2.3</span>
+                    <span class="rule-content">
+                        Не копируйте аккаунты администрации и бота.
+                    </span>
+                </div>
+                <div class="sub-rule">
+                    • Имитация администраторов запрещена<br>
+                    • Копирование бота наказуемо<br>
+                    • Вводящие в заблуждение ники будут изменены
+                </div>
+            </div>
+        </div>
+        
+        <div class="rules-section" style="--delay: 3">
+            <h2 class="section-title">3. Финансовые правила</h2>
+            
+            <div class="rule-item" style="--delay: 1">
+                <div>
+                    <span class="rule-number">3.1</span>
+                    <span class="rule-content">
+                        Запрещена продажа "схем заработка".
+                    </span>
+                </div>
+                <div class="sub-rule">
+                    • Обман игроков недопустим<br>
+                    • Финансовые пирамиды запрещены<br>
+                    • Мошенничество приведет к бану
                 </div>
             </div>
             
-            <h2 class="category-title">Общение и поведение</h2>
-            
-            <div class="rule-card">
-                <span class="rule-number">6</span>
-                <span class="rule-title">Голосовой чат</span>
-                <div class="rule-content">
-                    Не нарушайте покой в голосовом чате громкими звуками, криками или другим раздражающим поведением.
+            <div class="rule-item" style="--delay: 2">
+                <div>
+                    <span class="rule-number">3.2</span>
+                    <span class="rule-content">
+                        Любые формы попрошайничества запрещены.
+                    </span>
+                </div>
+                <div class="sub-rule">
+                    • Просьбы дать валюту наказуемы<br>
+                    • Требования подарков недопустимы<br>
+                    • Давление на других игроков запрещено
                 </div>
             </div>
             
-            <div class="rule-card">
-                <span class="rule-number">7</span>
-                <span class="rule-title">Флуд и спам</span>
-                <div class="rule-content">
-                    Запрещены повторяющиеся бессмысленные сообщения, массовые упоминания и другой спам.
+            <div class="rule-item" style="--delay: 3">
+                <div>
+                    <span class="rule-number">3.3</span>
+                    <span class="rule-content">
+                        Продажа/покупка валюты строго запрещена.
+                    </span>
                 </div>
-            </div>
-            
-            <div class="rule-card">
-                <span class="rule-number">8</span>
-                <span class="rule-title">Имитация</span>
-                <div class="rule-content">
-                    Не копируйте аккаунты администрации и бота. Это вводит участников в заблуждение.
-                </div>
-            </div>
-            
-            <div class="rule-card">
-                <span class="rule-number">9</span>
-                <span class="rule-title">Продажи</span>
-                <div class="rule-content">
-                    Запрещена несанкционированная продажа аккаунтов, контента или услуг. Обмен валюты между ботами также запрещен.
-                </div>
-            </div>
-            
-            <div class="rule-card">
-                <span class="rule-number">10</span>
-                <span class="rule-title">Раздражающий контент</span>
-                <div class="rule-content">
-                    Не присылайте скримеры, громкие стикеры или другой контент, который может испугать или раздражать участников.
-                </div>
-            </div>
-            
-            <h2 class="category-title">Финансовые правила</h2>
-            
-            <div class="rule-card">
-                <span class="rule-number">11</span>
-                <span class="rule-title">Мошенничество</span>
-                <div class="rule-content">
-                    Запрещена продажа "схем заработка" или других методов, направленных на обман игроков.
-                </div>
-            </div>
-            
-            <div class="rule-card">
-                <span class="rule-number">12</span>
-                <span class="rule-title">Попрошайничество</span>
-                <div class="rule-content">
-                    Любые формы попрошайничества запрещены, включая просьбы дать в долг.
-                </div>
-            </div>
-            
-            <div class="rule-card">
-                <span class="rule-number">13</span>
-                <span class="rule-title">Возврат долгов</span>
-                <div class="rule-content">
-                    Не беспокойте создателя по поводу возврата долгов между игроками. Это ваши личные договоренности.
-                </div>
-            </div>
-            
-            <div class="rule-card">
-                <span class="rule-number">14</span>
-                <span class="rule-title">Продажа валюты</span>
-                <div class="rule-content">
-                    Любые операции по покупке/продаже игровой валюты строго запрещены.
-                </div>
-            </div>
-            
-            <div class="rule-card">
-                <span class="rule-number">15</span>
-                <span class="rule-title">Скам</span>
-                <div class="rule-content">
-                    Любые формы мошенничества (скама) приведут к немедленному и постоянному бану.
+                <div class="sub-rule">
+                    • Обмен на реальные деньги наказуем<br>
+                    • Торговля аккаунтами запрещена<br>
+                    • Передача ценностей между ботами не разрешена
                 </div>
             </div>
         </div>
@@ -353,12 +370,12 @@
     
     <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
     <script>
-        // Инициализация анимированного фона
         document.addEventListener('DOMContentLoaded', function() {
+            // Инициализация частиц
             particlesJS('particles-js', {
                 "particles": {
                     "number": {
-                        "value": 80,
+                        "value": 60,
                         "density": {
                             "enable": true,
                             "value_area": 800
@@ -372,9 +389,6 @@
                         "stroke": {
                             "width": 0,
                             "color": "#000000"
-                        },
-                        "polygon": {
-                            "nb_sides": 5
                         }
                     },
                     "opacity": {
@@ -382,7 +396,7 @@
                         "random": true,
                         "anim": {
                             "enable": true,
-                            "speed": 1,
+                            "speed": 0.5,
                             "opacity_min": 0.1,
                             "sync": false
                         }
@@ -392,31 +406,26 @@
                         "random": true,
                         "anim": {
                             "enable": true,
-                            "speed": 2,
+                            "speed": 1,
                             "size_min": 0.1,
                             "sync": false
                         }
                     },
                     "line_linked": {
                         "enable": true,
-                        "distance": 150,
+                        "distance": 200,
                         "color": "#08f7fe",
                         "opacity": 0.2,
                         "width": 1
                     },
                     "move": {
                         "enable": true,
-                        "speed": 1,
+                        "speed": 0.8,
                         "direction": "none",
                         "random": true,
                         "straight": false,
                         "out_mode": "out",
-                        "bounce": false,
-                        "attract": {
-                            "enable": true,
-                            "rotateX": 600,
-                            "rotateY": 1200
-                        }
+                        "bounce": false
                     }
                 },
                 "interactivity": {
@@ -434,48 +443,41 @@
                     },
                     "modes": {
                         "grab": {
-                            "distance": 140,
+                            "distance": 180,
                             "line_linked": {
-                                "opacity": 1
+                                "opacity": 0.5
                             }
                         },
-                        "bubble": {
-                            "distance": 400,
-                            "size": 40,
-                            "duration": 2,
-                            "opacity": 8,
-                            "speed": 3
-                        },
-                        "repulse": {
-                            "distance": 200,
-                            "duration": 0.4
-                        },
                         "push": {
-                            "particles_nb": 4
-                        },
-                        "remove": {
-                            "particles_nb": 2
+                            "particles_nb": 3
                         }
                     }
                 },
                 "retina_detect": true
             });
-            
-            // Анимация при скролле
+
+            // Плавное появление элементов при скролле
             const animateOnScroll = () => {
-                const cards = document.querySelectorAll('.rule-card');
-                cards.forEach((card, index) => {
-                    const cardPosition = card.getBoundingClientRect().top;
-                    const screenPosition = window.innerHeight / 1.3;
+                const elements = document.querySelectorAll('.rules-section, .rule-item');
+                
+                elements.forEach(el => {
+                    const elementPosition = el.getBoundingClientRect().top;
+                    const screenPosition = window.innerHeight / 1.2;
                     
-                    if(cardPosition < screenPosition) {
-                        card.style.animation = fadeInUp 0.6s forwards ${index * 0.1}s;
+                    if(elementPosition < screenPosition) {
+                        el.style.opacity = '1';
+                        el.style.transform = 'translate(0)';
                     }
                 });
             };
-            
+
             window.addEventListener('scroll', animateOnScroll);
             animateOnScroll(); // Инициализация при загрузке
+
+            // Запуск анимации заголовка
+            setTimeout(() => {
+                document.querySelector('header').style.opacity = '1';
+            }, 300);
         });
     </script>
 </body>
